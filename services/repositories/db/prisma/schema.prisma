@@ -1,0 +1,135 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum OrderStatus {
+  PENDING      // created but not reserved/paid yet
+  RESERVED     // inventory reserved
+  PAID         // payment done
+  CONFIRMED    // final confirmed
+  CANCELLED    // cancelled by user/system
+  FAILED       // payment or process failure
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCESS
+  FAILED
+  REFUNDED
+}
+
+enum NotificationStatus {
+  PENDING
+  SENT
+  FAILED
+}
+
+enum NotificationChannel {
+  EMAIL
+  SMS
+  PUSH
+}
+
+/* ========= Core Tables ========= */
+
+// Product catalog
+model Product {
+  id          String        @id @default(uuid())
+  name        String
+  description String?
+  sku         String        @unique
+  price       Float
+  currency    String        @default("INR")
+  imageUrl    String?
+  category    String?
+
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  inventory   InventoryItem?
+  orderItems  OrderItem[]
+}
+
+// Inventory for each product
+model InventoryItem {
+  id               String   @id @default(uuid())
+  productId        String   @unique
+  totalQuantity    Int      @default(0)
+  reservedQuantity Int      @default(0)
+  updatedAt        DateTime @updatedAt
+
+  product          Product  @relation(fields: [productId], references: [id])
+}
+
+// Orders placed by users
+model Order {
+  id          String        @id @default(uuid())
+  userId      String        // can reference an external auth system
+  status      OrderStatus   @default(PENDING)
+  totalAmount Float
+  currency    String        @default("INR")
+
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  items       OrderItem[]
+  payments    Payment[]
+  notifications Notification[]
+}
+
+// Line items inside an order
+model OrderItem {
+  id         String   @id @default(uuid())
+  orderId    String
+  productId  String
+  quantity   Int
+  unitPrice  Float    // snapshot of product price at time of order
+
+  order      Order    @relation(fields: [orderId], references: [id])
+  product    Product  @relation(fields: [productId], references: [id])
+}
+
+// Payments linked to orders
+model Payment {
+  id             String        @id @default(uuid())
+  orderId        String
+  amount         Float
+  currency       String        @default("INR")
+  status         PaymentStatus @default(PENDING)
+  provider       String?       // e.g. "razorpay", "stripe"
+  transactionRef String?       // gateway reference / txn id
+  meta           Json?
+
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  order          Order         @relation(fields: [orderId], references: [id])
+}
+
+// Notifications triggered by order events, etc.
+model Notification {
+  id        String              @id @default(uuid())
+  orderId   String?
+  userId    String
+  channel   NotificationChannel
+  status    NotificationStatus  @default(PENDING)
+  subject   String?
+  message   String?
+  payload   Json?
+
+  createdAt DateTime            @default(now())
+  sentAt    DateTime?
+
+  order     Order?              @relation(fields: [orderId], references: [id])
+}
