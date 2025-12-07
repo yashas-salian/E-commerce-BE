@@ -1,4 +1,4 @@
-import { response, type Request, type Response } from "express";
+import { type Request, type Response } from "express";
 import orderquery from "../../../repositories/db/queries/orders.query.js"
 import { publishOrderCreated } from "../kafka/producer.js";
 
