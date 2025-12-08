@@ -12,9 +12,13 @@
   "license": "ISC",
   "packageManager": "pnpm@10.14.0",
   "dependencies": {
+    "@shared/log": "link:../../repositories/log",
     "@types/express-serve-static-core": "^5.1.0",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
-    "kafkajs": "^2.2.4"
+    "kafkajs": "^2.2.4",
+    "log": "link:../../repositories/log",
+    "uuid": "^13.0.0",
+    "winston": "^3.19.0"
   }
 }
