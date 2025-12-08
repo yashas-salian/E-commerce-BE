@@ -1,0 +1,17 @@
+**packages/db/.npmignore:**
+```
+# Don't publish source TypeScript files
+models/
+queries/
+prisma/
+index.ts
+*.ts
+!dist/**/*.d.ts
+
+# Don't publish these
+node_modules/
+generated/
+.env
+prisma/migrations/
+tsconfig.json
+pnpm-lock.yaml
