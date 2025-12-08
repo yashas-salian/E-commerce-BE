@@ -6,14 +6,13 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx tsc -b && node ../dist/server.js"
+    "dev": "npx tsc -b && node ./dist/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.14.0",
   "dependencies": {
-    "@shared/log": "link:../../repositories/log",
     "@types/express-serve-static-core": "^5.1.0",
     "@yashas40/db": "^2.2.3",
     "@yashas40/log": "1.0.0",

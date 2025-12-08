@@ -12,9 +12,6 @@ importers:
 
   .:
     dependencies:
-      '@shared/log':
-        specifier: link:../../repositories/log
-        version: link:../../repositories/log
       '@types/express-serve-static-core':
         specifier: ^5.1.0
         version: 5.1.0
