@@ -1,4 +1,4 @@
-import { prisma } from "../prisma/client.js"
+import { prisma } from "../client.js"
 import{ createOrderSchema } from "../models/order.model.js"
 
 
