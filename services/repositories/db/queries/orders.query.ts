@@ -10,7 +10,7 @@ class Controller{
         return this.instance
     }
 
-    createOrder = async function (data: Object){
+    createOrder = async (data: Object) => {
         try {
             const orderData = createOrderSchema.safeParse(data) 
             if(!orderData.success) return
