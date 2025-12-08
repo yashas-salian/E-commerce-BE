@@ -19,8 +19,8 @@ importers:
         specifier: ^5.1.0
         version: 5.1.0
       '@yashas40/db':
-        specifier: 1.0.0
-        version: 1.0.0
+        specifier: 2.0.0
+        version: 2.0.0
       '@yashas40/log':
         specifier: 1.0.0
         version: 1.0.0
@@ -73,8 +73,8 @@ packages:
   '@types/triple-beam@1.3.5':
     resolution: {integrity: sha512-6WaYesThRMCl19iryMYP7/x2OVgCtbIVflDGFpWnb9irXI3UjYE4AzmYuiUKY1AJstGijoY+MgUszMgRxIYTYw==}
 
-  '@yashas40/db@1.0.0':
-    resolution: {integrity: sha512-Q0/kQS0ixD2cNCD1R3TzBvuAduUlT2EgqKiFxRABp+fmZnHUqJtWW6Z+GM/cDQOxljf7jlI5jQoFgpEtVeqJ9A==}
+  '@yashas40/db@2.0.0':
+    resolution: {integrity: sha512-4LfVGEtrkCFitao/z7cC6TUnadvx8E0EA1AapBDfFOWaKQVn4SnrrULAsbKNwzQXocNv2ZYKuh0Fuynps3tDig==}
 
   '@yashas40/log@1.0.0':
     resolution: {integrity: sha512-pPbl6hHFAGaV87Bm6uTST0EmFYXUPWfkAkAq8QM5AYPsUev+ud3VU7uy9b1+8HLEYTfVAWejbBBkO8kY4xl3aA==}
@@ -461,7 +461,7 @@ snapshots:
 
   '@types/triple-beam@1.3.5': {}
 
-  '@yashas40/db@1.0.0': {}
+  '@yashas40/db@2.0.0': {}
 
   '@yashas40/log@1.0.0': {}
 

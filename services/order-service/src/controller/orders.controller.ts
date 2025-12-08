@@ -1,5 +1,5 @@
 import { type Request, type Response } from "express";
-import orderquery from "../../../repositories/db/queries/orders.query.js"
+import { orderQuery } from "@yashas40/db"
 import { publishOrderCreated } from "../kafka/producer.js";
 
 class Controller{
@@ -14,7 +14,7 @@ class Controller{
 
     createOrders = async(req: Request, res: Response) => {
         const data = req.body
-        const Response = await orderquery.createOrder(data)
+        const Response = await orderQuery.createOrder(data)
         const payloadToKafka = {
             orderId: Response?.order.id,
             items: Response?.items
