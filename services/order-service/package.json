@@ -5,7 +5,7 @@
   "main": "dist/server.js",
   "type": "module",
   "scripts": {
-    "dev": "tsc -b && node ./dist/server.js",
+    "dev": "tsc -b && node ./dist/src/server.js",
     "build": "tsc -b",
     "start": "node ./dist/server.js",
     "postinstall": "cd ../repositories/db && pnpm db:generate",
@@ -15,10 +15,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@yashas40/db": "^2.2.3",
-    "@yashas40/log": "^1.0.1",
-    "@prisma/client": "^5.22.0",
     "@prisma/adapter-pg": "^5.22.0",
+    "@prisma/client": "^5.22.0",
+    "@yashas40/db": "^2.2.4",
+    "@yashas40/log": "^1.0.1",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "kafkajs": "^2.2.4",

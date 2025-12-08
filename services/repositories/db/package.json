@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@prisma/adapter-pg": "^5.x.x",
+    "dotenv": "^17.2.3",
     "zod": "^3.x.x"
   },
   "peerDependencies": {
@@ -37,8 +38,8 @@
     "@prisma/client": "^5.x.x",
     "@types/node": "^20.x.x",
     "@types/pg": "^8.x.x",
-    "typescript": "^5.3.0",
-    "prisma": "^5.x.x",
-    "pg": "^8.x.x"
+    "pg": "^8.x.x",
+    "prisma": "^7.1.0",
+    "typescript": "^5.3.0"
   }
 }

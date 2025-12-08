@@ -1,13 +1,13 @@
 import zod from "zod"
 export const inventorySchema = zod.object({
-    userId: zod.string().nonoptional(),
+    userId: zod.string(),
     items: zod.array(
         zod.object({
-            userId: zod.string().nonoptional(),
-            orderId: zod.string().nonoptional(),
-            productId: zod.string().nonoptional(),
-            quantity: zod.int().nonoptional(),
-            unitPrice: zod.float64().nonoptional()
+            userId: zod.string(),
+            orderId: zod.string(),
+            productId: zod.string(),
+            quantity: zod.number().int(),
+            unitPrice: zod.number()
         })
     )
 })

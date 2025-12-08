@@ -41,9 +41,6 @@ enum NotificationChannel {
   PUSH
 }
 
-/* ========= Core Tables ========= */
-
-// Product catalog
 model Product {
   id          String        @id @default(uuid())
   name        String

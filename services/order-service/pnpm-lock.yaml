@@ -19,8 +19,8 @@ importers:
         specifier: ^5.22.0
         version: 5.22.0(prisma@5.22.0)
       '@yashas40/db':
-        specifier: ^2.2.3
-        version: 2.2.3(pg@8.16.3)(prisma@5.22.0)
+        specifier: ^2.2.4
+        version: 2.2.4(@prisma/client@5.22.0(prisma@5.22.0))(pg@8.16.3)
       '@yashas40/log':
         specifier: ^1.0.1
         version: 1.0.1
@@ -145,8 +145,11 @@ packages:
   '@types/uuid@10.0.0':
     resolution: {integrity: sha512-7gqG38EyHgyP1S+7+xomFtL+ZNHcKv6DwNaCZmJmo1vgMugyF3TCnXVg4t1uk89mLNwnLtnY3TpOpCOyp1/xHQ==}
 
-  '@yashas40/db@2.2.3':
-    resolution: {integrity: sha512-+xwV5ir3CCs11eDVEbge76F3oi6KoDTJXIb+9KUZtyeR5xavX7wVA0JHGyRiRSuvW8y9rnH6kxHChwYoyIIUoA==}
+  '@yashas40/db@2.2.4':
+    resolution: {integrity: sha512-z6Tnz8TN+NRccfbNY1P88IV5YqMGBZ6HW/8z3XFSFa9XIyo9kK1HMZ3vWr/liEbFstaJYZ9D5GrSj/jshrRpiA==}
+    peerDependencies:
+      '@prisma/client': ^5.x.x
+      pg: ^8.x.x
 
   '@yashas40/log@1.0.1':
     resolution: {integrity: sha512-id10j+/3NBYqkE+LoOljrgpOQb1tVC8Hk+o7/rbvlTmZ8tE5V/SIs8ZMiQ7FhQ5lyw7UBJKcfgBsmnzzDicEkg==}
@@ -678,14 +681,12 @@ snapshots:
 
   '@types/uuid@10.0.0': {}
 
-  '@yashas40/db@2.2.3(pg@8.16.3)(prisma@5.22.0)':
+  '@yashas40/db@2.2.4(@prisma/client@5.22.0(prisma@5.22.0))(pg@8.16.3)':
     dependencies:
       '@prisma/adapter-pg': 5.22.0(pg@8.16.3)
       '@prisma/client': 5.22.0(prisma@5.22.0)
+      pg: 8.16.3
       zod: 3.25.76
-    transitivePeerDependencies:
-      - pg
-      - prisma
 
   '@yashas40/log@1.0.1':
     dependencies:
