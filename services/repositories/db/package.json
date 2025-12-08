@@ -1,24 +1,44 @@
 {
   "name": "@yashas40/db",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./client": {
+      "import": "./generated/prisma/client.js",
+      "types": "./generated/prisma/index.d.ts"
+    }
+  },
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "generated/**/*",
+    "prisma/**/*"
   ],
   "scripts": {
     "build": "npx tsc --b",
+    "db:generate": "npx prisma generate",
+    "postinstall": "npx prisma generate",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@prisma/client": "^5.x.x",
     "@prisma/adapter-pg": "^5.x.x",
     "zod": "^3.x.x"
   },
+  "peerDependencies": {
+    "@prisma/client": "^5.x.x",
+    "pg": "^8.x.x"
+  },
   "devDependencies": {
+    "@prisma/client": "^5.x.x",
     "@types/node": "^20.x.x",
+    "@types/pg": "^8.x.x",
     "typescript": "^5.3.0",
-    "prisma": "^5.x.x"
+    "prisma": "^5.x.x",
+    "pg": "^8.x.x"
   }
 }
