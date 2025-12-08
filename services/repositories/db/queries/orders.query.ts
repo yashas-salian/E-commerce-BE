@@ -3,7 +3,7 @@ import{ createOrderSchema } from "../models/order.model.js"
 
 
 class Controller{
-    private static instance: Controller | null;
+    private static instance: Controller | null = null;
 
     static getInstance(){
         if(!this.instance) this.instance = new Controller()
@@ -13,7 +13,7 @@ class Controller{
     createOrder = async (data: Object) => {
         try {
             const orderData = createOrderSchema.safeParse(data) 
-            if(!orderData.success) return
+            if(!orderData.success) return null
             const {userId, items} = orderData.data
             const totalAmount = items.reduce((sum, item) => sum + item.quantity * item.unitPrice, 0)
             return await prisma.$transaction(async (tx) =>{

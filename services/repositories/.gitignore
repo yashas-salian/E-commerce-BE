@@ -5,3 +5,9 @@ node_modules
 /generated/prisma
 
 /dist
+
+*.js
+*.map
+*.d.map
+*.d.ts
+*.tsbuildinfo
