@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx tsc -b && node ../dist/index.js"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +15,7 @@
   "dependencies": {
     "@shared/log": "link:../../repositories/log",
     "@types/express-serve-static-core": "^5.1.0",
+    "@yashas40/log": "1.0.0",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "kafkajs": "^2.2.4",
