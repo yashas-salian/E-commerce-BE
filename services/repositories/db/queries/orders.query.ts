@@ -50,5 +50,4 @@ class Controller{
     }
 }
 
-const orderQuery = Controller.getInstance()
-export default orderQuery
+export const orderQuery = Controller.getInstance()
