@@ -14,5 +14,7 @@ app.get('/health', (_req, res)=>{
 app.use('app/v1/orders', orderRouter)
 
 app.use(errorLogger('order-service'))
-app.listen(3000)
+app.listen(3000, () => {
+    console.log("Listening port 3000")
+})
 export default app  
