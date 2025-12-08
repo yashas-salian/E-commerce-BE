@@ -1,0 +1,3 @@
+overrides:
+  '@shared/log': link:../../repositories/log
+  log: link:../../repositories/log
