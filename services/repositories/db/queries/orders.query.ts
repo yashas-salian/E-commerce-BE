@@ -13,7 +13,10 @@ class Controller{
     createOrder = async (data: Object) => {
         try {
             const orderData = createOrderSchema.safeParse(data) 
-            if(!orderData.success) return null
+            if(!orderData.success) {
+                console.error(orderData.error.format())
+                throw new Error("Invalid order payload")
+            }
             const {userId, items} = orderData.data
             const totalAmount = items.reduce((sum, item) => sum + item.quantity * item.unitPrice, 0)
             return await prisma.$transaction(async (tx) =>{

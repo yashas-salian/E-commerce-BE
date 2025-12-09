@@ -11,7 +11,7 @@ const producer: Producer = kafka.producer()
 
 export async function connectProducer(){
     await producer.connect()
-    logger.info("Order producer connected successfully")
+    logger.info("Order-service producer connected successfully")
 }
 
 export async function publishOrderCreated(Orders: any){

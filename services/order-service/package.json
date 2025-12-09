@@ -2,13 +2,13 @@
   "name": "@services/order-service",
   "version": "1.0.0",
   "description": "Order service for e-commerce platform",
-  "main": "dist/server.js",
+  "packageManager": "pnpm@10.14.0",
+  "main": "dist/src/index.js",
   "type": "module",
   "scripts": {
-    "dev": "tsc -b && node ./dist/src/server.js",
-    "build": "tsc -b",
-    "start": "node ./dist/server.js",
-    "postinstall": "cd ../repositories/db && pnpm db:generate",
+    "dev": "tsc -b && node ./dist/src/index.js",
+    "build": "npx tsc -b",
+    "start": "node ./dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -19,6 +19,7 @@
     "@prisma/client": "7.0.1",
     "@yashas40/db": "^2.2.7",
     "@yashas40/log": "^1.0.1",
+    "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "kafkajs": "^2.2.4",
@@ -27,6 +28,7 @@
     "winston": "^3.19.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.0",
     "@types/node": "^20.0.0",
     "@types/pg": "^8.11.0",
