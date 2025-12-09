@@ -26,7 +26,7 @@ class Controller{
             orderId: response?.order.id,
             items: response?.items
         }
-        // await publishOrderCreated(payloadToKafka)
+        await publishOrderCreated(payloadToKafka)
         res.status(200).json({
             success: true,
             message: "Order created successfully"
