@@ -17,14 +17,20 @@ class Controller{
         const response = await orderQuery.createOrder(data)
 
         if(!response){
-            throw new Error("DB call failed")
+            res.status(400).json({
+                success: false, 
+                message: "Invalid order payload"
+            })
         }
         const payloadToKafka = {
             orderId: response?.order.id,
             items: response?.items
         }
-        await publishOrderCreated(payloadToKafka)
-        res.status(200).json({})
+        // await publishOrderCreated(payloadToKafka)
+        res.status(200).json({
+            success: true,
+            message: "Order created successfully"
+        })
     }
 
     fetchOrders = async(req: Request, res: Response) => {

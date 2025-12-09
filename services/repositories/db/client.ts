@@ -4,8 +4,6 @@ import dotenv from "dotenv"
 
 dotenv.config()
 
-export * from "./generated/prisma/client.js"
-
 // Export factory function for services to create their own instance
 export function createPrismaClient(databaseUrl: string) {
   const adapter = new PrismaPg({
