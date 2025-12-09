@@ -48,7 +48,7 @@ class Controller{
             }
         })
         } catch (error) {
-            throw new Error("Error occurred while creating order")
+            throw new Error(error instanceof Error ? error.message:"Error occurred while creating order")
         }
     }
 }
