@@ -20,7 +20,7 @@ importers:
         version: 7.0.1(prisma@7.0.1(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3))(typescript@5.9.3)
       '@yashas40/db':
         specifier: ^2.2.7
-        version: 2.3.0(@prisma/client@7.0.1(prisma@7.0.1(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3))(typescript@5.9.3))(pg@8.16.3)
+        version: 2.3.1(@prisma/client@7.0.1(prisma@7.0.1(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3))(typescript@5.9.3))(pg@8.16.3)
       '@yashas40/log':
         specifier: ^1.0.1
         version: 1.0.1
@@ -225,8 +225,8 @@ packages:
   '@types/uuid@10.0.0':
     resolution: {integrity: sha512-7gqG38EyHgyP1S+7+xomFtL+ZNHcKv6DwNaCZmJmo1vgMugyF3TCnXVg4t1uk89mLNwnLtnY3TpOpCOyp1/xHQ==}
 
-  '@yashas40/db@2.3.0':
-    resolution: {integrity: sha512-i14gkV1yMe0T2CKaoPHjMNslG/+8Kioc0jS3UWbzIZr/swjth+Nex2T8AUzYh/WoN7kLHrjQS4zNalPUWe3e/Q==}
+  '@yashas40/db@2.3.1':
+    resolution: {integrity: sha512-alCC+mDyma+h54G6t0VOBc3RbnhqDdDgevyOOh9aAJeM6BxCbY0OUL+7RKgQ/I/Xv1T467zJNdTS8BtQScyfkQ==}
     peerDependencies:
       '@prisma/client': ^7.1.0
       pg: ^8.x.x
@@ -1109,7 +1109,7 @@ snapshots:
 
   '@types/uuid@10.0.0': {}
 
-  '@yashas40/db@2.3.0(@prisma/client@7.0.1(prisma@7.0.1(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3))(typescript@5.9.3))(pg@8.16.3)':
+  '@yashas40/db@2.3.1(@prisma/client@7.0.1(prisma@7.0.1(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3))(typescript@5.9.3))(pg@8.16.3)':
     dependencies:
       '@prisma/adapter-pg': 7.1.0
       '@prisma/client': 7.0.1(prisma@7.0.1(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3))(typescript@5.9.3)
