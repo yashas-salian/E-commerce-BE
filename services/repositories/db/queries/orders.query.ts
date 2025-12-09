@@ -46,6 +46,9 @@ class Controller{
                 order: createdOrder,
                 items: createdItems
             }
+        }, {
+            maxWait: 10000,
+            timeout: 20000
         })
         } catch (error) {
             throw new Error(error instanceof Error ? error.message:"Error occurred while creating order")
