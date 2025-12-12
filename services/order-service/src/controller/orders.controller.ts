@@ -34,11 +34,30 @@ class Controller{
     }
 
     fetchOrders = async(req: Request, res: Response) => {
-        const data = req.body
-        // const response = await 
+        const userId = req.params.id
+        const jsonData = {
+            userId: userId
+        } 
+        const response = await orderQuery.fetchOrder(jsonData)
+
+        if(!response){
+            res.status(400).json({
+                success: false, 
+                message: "Invalid order payload"
+            })
+        }
+        res.status(200).json({
+            data: response,
+            success: true,
+            message: "Order fetched successfully"
+        })
     }
 
     cancelOrder = async(req: Request, res: Response) => {
+
+    }
+
+    cancelItem = async(req: Request, res: Response) => {
 
     }
 }
