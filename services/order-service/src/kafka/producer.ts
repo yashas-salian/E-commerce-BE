@@ -21,3 +21,19 @@ export async function publishOrderCreated(Orders: any){
     })
     logger.info("orders.created topic published successfully")
 }
+
+export async function publishOrderConfirmed(Orders: any){
+    await producer.send({
+        topic: "order.confirmed",
+        messages: [{value: JSON.stringify(Orders)}]
+    })
+    logger.info("orders.confirmed topic published successfully")
+}
+
+export async function publishOrderCancelled(Orders: any){
+    await producer.send({
+        topic: "order.cancelled",
+        messages: [{value: JSON.stringify(Orders)}]
+    })
+    logger.info("orders.cancelled topic published successfully")
+}
