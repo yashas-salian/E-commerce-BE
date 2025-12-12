@@ -34,7 +34,8 @@ class Controller{
     }
 
     fetchOrders = async(req: Request, res: Response) => {
-
+        const data = req.body
+        // const response = await 
     }
 
     cancelOrder = async(req: Request, res: Response) => {

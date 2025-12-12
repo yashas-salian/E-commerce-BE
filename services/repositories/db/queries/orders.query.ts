@@ -1,5 +1,5 @@
 import { prisma } from "../client.js"
-import{ createOrderSchema } from "../models/order.model.js"
+import{ createOrderSchema, cancelItemSchema, cancelOrderSchema, fetchOrderSchema } from "../models/order.model.js"
 
 
 class Controller{
@@ -52,6 +52,55 @@ class Controller{
         })
         } catch (error) {
             throw new Error(error instanceof Error ? error.message:"Error occurred while creating order")
+        }
+    }
+
+    fetchOrder = async (data: Object) => {
+        try {
+            const userDetails = fetchOrderSchema.safeParse(data)
+            const orders = await prisma.order.findMany({
+                where: {
+                    userId: userDetails.data?.userId
+                },
+                include: {
+                    items: true
+                }
+            })
+            if(!orders) throw new Error("Orders with userId not found")
+            return orders
+
+        } catch (error) {
+            throw new Error(error instanceof Error ? error.message:"Error occurred while fetching order")
+        }
+    }
+
+    cancelOrder = async(data: Object) => {
+        try {
+            const orderDetails = cancelOrderSchema.safeParse(data)
+            const isDeleted = await prisma.order.delete({
+                where: {
+                    id: orderDetails.data?.orderId
+                }
+            })
+            if(!isDeleted) throw new Error("Order cancellation failed")
+            return isDeleted    
+        } catch (error) {
+            throw new Error(error instanceof Error ? error.message:"Error occurred while cancelling order")
+        }
+    }
+
+    cancelItem = async(data: Object) => {
+        try {
+            const itemDetails = cancelItemSchema.safeParse(data)
+            const isDeleted = await prisma.orderItem.delete({
+                where: {
+                    id: itemDetails.data?.itemId
+                }
+            })
+            if(!isDeleted) throw new Error("Order cancellation failed")
+            return isDeleted    
+        } catch (error) {
+            throw new Error(error instanceof Error ? error.message:"Error occurred while cancelling item")
         }
     }
 }

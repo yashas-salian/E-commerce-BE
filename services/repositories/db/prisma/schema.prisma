@@ -80,7 +80,7 @@ model Order {
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
 
-  items       OrderItem[]
+  items       OrderItem[] 
   payments    Payment[]
   notifications Notification[]
 }
@@ -93,7 +93,7 @@ model OrderItem {
   quantity   Int
   unitPrice  Float    // snapshot of product price at time of order
 
-  order      Order    @relation(fields: [orderId], references: [id])
+  order      Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
   product    Product  @relation(fields: [productId], references: [id])
 }
 

@@ -11,4 +11,16 @@ export const createOrderSchema = zod.object({
         })
     ).min(1, "Order must have at least one item")
 })
+
+export const fetchOrderSchema = zod.object({
+    userId: zod.string()
+})
+
+export const cancelOrderSchema = zod.object({
+    orderId: zod.string()
+})
+
+export const cancelItemSchema = zod.object({
+    itemId: zod.string()
+})
     
