@@ -74,20 +74,24 @@ class Controller{
         }
     }
 
-    cancelOrder = async(data: Object) => {
-        try {
-            const orderDetails = cancelOrderSchema.safeParse(data)
-            const isDeleted = await prisma.order.delete({
-                where: {
-                    id: orderDetails.data?.orderId
-                }
-            })
-            if(!isDeleted) throw new Error("Order cancellation failed")
-            return isDeleted    
-        } catch (error) {
-            throw new Error(error instanceof Error ? error.message:"Error occurred while cancelling order")
-        }
-    }
+    //we don't do this in a real world aaplication, we only cancel indv items
+    // cancelOrder = async(data: Object) => {
+    //     try {
+    //         const orderDetails = cancelOrderSchema.safeParse(data)
+    //         const isDeleted = await prisma.order.delete({
+    //             where: {
+    //                 id: orderDetails.data?.orderId
+    //             },
+    //             include: {
+    //                 items: true
+    //             }
+    //         })
+    //         if(!isDeleted) throw new Error("Order cancellation failed")
+    //         return isDeleted    
+    //     } catch (error) {
+    //         throw new Error(error instanceof Error ? error.message:"Error occurred while cancelling order")
+    //     }
+    // }
 
     cancelItem = async(data: Object) => {
         try {
