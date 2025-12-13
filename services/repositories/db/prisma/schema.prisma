@@ -111,7 +111,7 @@ model Payment {
   createdAt      DateTime      @default(now())
   updatedAt      DateTime      @updatedAt
 
-  order          Order         @relation(fields: [orderId], references: [id])
+  order          Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
 }
 
 // Notifications triggered by order events, etc.
@@ -128,5 +128,5 @@ model Notification {
   createdAt DateTime            @default(now())
   sentAt    DateTime?
 
-  order     Order?              @relation(fields: [orderId], references: [id])
+  order     Order?              @relation(fields: [orderId], references: [id], onDelete: Cascade)
 }

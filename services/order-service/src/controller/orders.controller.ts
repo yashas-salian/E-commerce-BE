@@ -54,11 +54,43 @@ class Controller{
     }
 
     cancelOrder = async(req: Request, res: Response) => {
+        const orderId = req.params.id
+        const jsonData = {
+            orderId: orderId
+        }
+        const response = await orderQuery.cancelOrder(jsonData)
 
+        if(!response){
+            res.status(400).json({
+                success: false, 
+                message: "Invalid orderId payload"
+            })
+        }
+        res.status(200).json({
+            // data: response,
+            success: true,
+            message: "Order cancelled successfully"
+        })
     }
 
     cancelItem = async(req: Request, res: Response) => {
+        const itemId = req.params.id
+        const jsonData = {
+            itemId: itemId
+        }
+        const response = await orderQuery.cancelItem(jsonData)
 
+        if(!response){
+            res.status(400).json({
+                success: false, 
+                message: "Invalid itemId payload"
+            })
+        }
+        res.status(200).json({
+            // data: response,
+            success: true,
+            message: "Item cancelled successfully"
+        })
     }
 }
 
