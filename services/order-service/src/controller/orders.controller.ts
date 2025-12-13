@@ -1,6 +1,6 @@
 import { type Request, type Response } from "express";
 import { orderQuery } from "@yashas40/db"
-import { publishOrderCreated } from "../kafka/producer.js";
+import { publishOrderCancelled, publishOrderCreated } from "../kafka/producer.js";
 
 class Controller{
     private static instance : Controller | null;
@@ -53,25 +53,25 @@ class Controller{
         })
     }
 
-    cancelOrder = async(req: Request, res: Response) => {
-        const orderId = req.params.id
-        const jsonData = {
-            orderId: orderId
-        }
-        const response = await orderQuery.cancelOrder(jsonData)
+    // cancelOrder = async(req: Request, res: Response) => {
+    //     const orderId = req.params.id
+    //     const jsonData = {
+    //         orderId: orderId
+    //     }
+    //     const response = await orderQuery.cancelOrder(jsonData)
 
-        if(!response){
-            res.status(400).json({
-                success: false, 
-                message: "Invalid orderId payload"
-            })
-        }
-        res.status(200).json({
-            // data: response,
-            success: true,
-            message: "Order cancelled successfully"
-        })
-    }
+    //     if(!response){
+    //         res.status(400).json({
+    //             success: false, 
+    //             message: "Invalid orderId payload"
+    //         })
+    //     }
+    //     res.status(200).json({
+    //         data: response,
+    //         success: true,
+    //         message: "Order cancelled successfully"
+    //     })
+    // }
 
     cancelItem = async(req: Request, res: Response) => {
         const itemId = req.params.id
@@ -86,8 +86,13 @@ class Controller{
                 message: "Invalid itemId payload"
             })
         }
+        const payloadToKafka = {
+            response
+        }
+        await publishOrderCancelled(payloadToKafka)
+
         res.status(200).json({
-            // data: response,
+            data: response,
             success: true,
             message: "Item cancelled successfully"
         })

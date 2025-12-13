@@ -22,6 +22,7 @@ export async function publishOrderCreated(Orders: any){
     logger.info("orders.created topic published successfully")
 }
 
+//this should be published after payment is completed, will permanently adjusts the inventory
 export async function publishOrderConfirmed(Orders: any){
     await producer.send({
         topic: "order.confirmed",
