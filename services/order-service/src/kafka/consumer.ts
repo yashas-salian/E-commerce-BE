@@ -1,6 +1,7 @@
 import { Kafka, type Consumer } from "kafkajs";
 import { env } from "../config/env.js";
 import { logger } from "../utils/logger.js";
+import { AppError } from "../utils/appError.js";
 
 const kafka = new Kafka({
     clientId: "order-service",
@@ -30,6 +31,7 @@ export async function startConsumer(){
                 }
             } catch (error) {
                 //appError
+                throw new AppError("orders consumer error", 500)
                 logger.error("Error handling message", error)
                 //push to DLQ for retry
             }
