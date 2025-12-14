@@ -3,11 +3,22 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/src/index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "products:seed": "npx tsc -b && node ./dist/src/utils/seed.js",
+    "build": "npx tsc -b"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.14.0"
+  "packageManager": "pnpm@10.14.0",
+  "dependencies": {
+    "@faker-js/faker": "^10.1.0",
+    "@yashas40/db": "^2.3.7",
+    "dotenv": "^17.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.2"
+  }
 }
